@@ -8,5 +8,5 @@ This is a student-focused website created as part of my coursework.
 - Hosted for free on GitHub Pages  
 
 ## Live Website  
-[Click here to view Hot Beans Web](https://yourusername.github.io/hot-beans-web/)
+[Click here to view Hot Beans Web](https://RochPereira7.github.io/hot-beans-web/)
 
