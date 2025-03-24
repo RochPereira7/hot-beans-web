@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Beans</title>
+    <style>
+        /* General reset and styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: "Comic Sans MS", sans-serif; /* Bad font choice */
+            color: #00ff00; /* Neon green text - hard to read */
+            background-color: #00a2ff; /* Bright magenta background */
+            scroll-behavior: smooth;
+        }
+
+        /* Fullscreen video background */
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.2; /* Too faded */
+        }
+
+        /* Main content styles */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            background-color: #00a2ff; /* Clashing background */
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            color: #0000ff; /* Bright blue text */
+            text-shadow: 2px 2px 5px #0000ff; /* Overdone text shadow */
+        }
+
+        p {
+            font-size: 2em;
+            margin: 20px 0;
+            color: #000; /* Black text on neon magenta background */
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #ffff00; /* Bright yellow button */
+            color: #ff0000; /* Red text */
+            text-decoration: none;
+            font-size: 2em;
+            border-radius: 0px; /* Square button */
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #ff0000; /* Green button hover */
+        }
+
+        section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #ff0000; /* Red background for sections */
+        }
+
+        .profile, .trainee, .job, .application, .courses {
+            background: #ffff00; /* Yellow background */
+            margin: 20px auto;
+            border-radius: 0px; /* Square corners */
+            padding: 20px;
+            max-width: 800px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.8);
+            border: 5px dotted #0000ff; /* Dotted border */
+        }
+
+        img, video {
+            width: 100%;
+            border-radius: 0px; /* No rounded corners */
+        }
+
+        .form-group {
+            margin: 15px 0;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0;
+            border-radius: 0px; /* Square edges */
+            border: 2px solid #ff0000; /* Red border */
+        }
+
+        button {
+            background-color: #0000ff; /* Blue button */
+            color: #ffff00; /* Yellow text */
+            padding: 15px 30px;
+            border: 3px solid #0000ff; /* Border */
+            border-radius: 0px; /* Square button */
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+
+        button:hover {
+            background-color: #ff0000; /* Red on hover */
+            color: #0000ff; /* Blue text on hover */
+        }
+
+        .links a {
+            color: #0000ff; /* Pink links */
+            text-decoration: underline;
+            font-weight: bold;
+            font-size: 2em; /* Large font size */
+        }
+
+        .links a:hover {
+            color: #0000ff; /* Blue links on hover */
+            text-decoration: none; /* Remove underline */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Video Background -->
+    <video id="video-background" autoplay muted loop>
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Hot Beans Web</h1>
+        
+        <a href="#services" class="button">Explore</a>
+    </div>
+
+    <!-- Company Profile -->
+    <section id="services" class="profile">
+        <h2>Company Profile</h2>
+        <p>At Hot Beans Web, we specialize in crafting responsive, user-friendly websites for businesses of all sizes. Our team is dedicated to turning your vision into reality.</p>
+        <img src="company-profilee.jpg" alt="Hot Beans Web Team">
+    </section>
+
+    <!-- Trainee Profile -->
+    <section class="trainee">
+        <h2>Trainee Profile</h2>
+        <p>Meet Alex, one of our most promising trainees. He shares his experience:</p>
+        <video controls>
+            <source src="trainee-experience.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p>"Hot Beans Web has been a fantastic place to learn and grow as a web developer. The supportive environment and hands-on projects have been invaluable!"</p>
+    </section>
+
+    <!-- Job Specifications -->
+    <section class="job">
+        <h2>Web Development Job</h2>
+        <p>We are looking for passionate individuals to join our team!</p>
+        <ul>
+            <li><strong>Role:</strong> Junior Web Developer</li>
+            <li><strong>Qualifications:</strong> Knowledge of HTML, CSS, JavaScript, and responsive design principles.</li>
+            <li><strong>Experience:</strong> 0-2 years (internships count!)</li>
+        </ul>
+    </section>
+
+    <!-- Application Form -->
+    <section class="application">
+        <h2>Apply for a Job</h2>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea name="message" rows="5" placeholder="Why do you want to join Hot Beans Web?" required></textarea>
+            </div>
+            <button type="submit">Submit Application</button>
+        </form>
+    </section>
+
+    <!-- Web Development Courses -->
+    <section class="courses">
+        <h2>Learn Web Development</h2>
+        <p>Explore these top-rated courses to enhance your web development skills:</p>
+        <div class="links">
+            <p><a href="https://www.coursera.org/professional-certificates/meta-front-end-developer" target="_blank">Meta Front-End Developer</a></p>
+            <p><a href="https://www.coursera.org/professional-certificates/ibm-full-stack-cloud-developer" target="_blank">IBM Full-Stack Cloud Developer</a></p>
+            <p><a href="https://www.coursera.org/specializations/html-css-javascript-for-web-developers" target="_blank">HTML, CSS, and JavaScript for Web Developers</a></p>
+        </div>
+    </section>
+</body>
+
+</html>

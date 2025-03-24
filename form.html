@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Hot Beans Web Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+<style>
+/* General reset and styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            background-color: #ffffff;
+            scroll-behavior: smooth;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+/* Main title styles */
+        .main-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 5em;
+            font-weight: 700;
+            background: linear-gradient(45deg, #76B900, #ff9f43);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 20px rgba(54, 221, 76, 0.151);
+            margin-bottom: 20px;
+            animation: titleFadeIn 2s ease-out;
+        }
+
+/* Navbar styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            padding: 15px 0;
+            z-index: 1000;
+            margin: 0;
+        }
+
+        .nav-container {
+            max-width: 1800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .logo {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            margin-right: 50px;
+            padding-left: 5px;
+        }
+
+        .logo:hover {
+            color: #76B900;
+        }
+
+/* Advanced Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 15px 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(0, 0, 0, 0.95);
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
+            padding: 0 30px;
+        }
+
+        .logo {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            margin-right: 50px;
+            padding-left: 5px;
+        }
+
+        .logo:hover {
+            color: #76B900;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+            flex-wrap: nowrap;
+        }
+
+        .nav-links li {
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8em;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #76B900;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #76B900;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+/* Main content styles */
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 80px;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        h1 {
+            font-size: 4em;
+            margin: 0;
+            animation: fadeIn 3s;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #76B900;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+/* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                padding: 20px;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1.2em;
+            }
+
+            .logo {
+                font-size: 1.2em;
+                padding-left: 10px;
+            }
+
+            .nav-container {
+                justify-content: space-between;
+                width: 100%;
+                padding: 0 15px;
+            }
+        }
+
+/* Wide Container */
+        @media (min-width: 1200px) {
+            .nav-container {
+                max-width: 1800px;
+                padding: 0 50px;
+            }
+        }
+
+/* Content doesn't go under navbar */
+        body {
+            padding-top: 60px;
+        }
+
+/* Update media queries for larger screens */
+        @media (min-width: 1200px) {
+            .nav-container {
+                max-width: 2000px;
+                padding: 0 50px;
+            }
+        }
+
+/* Application Form Styles */
+        .application {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 60px 20px;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .application-header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .application-header h2 {
+            color: #76B900;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .application-header p {
+            color: #fff;
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(26, 26, 26, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(54, 221, 76, 0.151);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #fff;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(26, 26, 26, 0.95);
+            border: 2px solid rgba(54, 221, 76, 0.151);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(26, 26, 26, 0.95);
+            border: 2px solid rgba(54, 221, 76, 0.151);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: calc(100% - 15px) center;
+            padding-right: 40px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .form-group select option {
+            background: rgba(26, 26, 26, 0.95);
+            color: #fff;
+            padding: 12px;
+        }
+
+        .form-group select:focus {
+            border-color: #76B900;
+            box-shadow: 0 0 15px rgba(54, 221, 76, 0.151);
+            outline: none;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category h4 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #76B900;
+        }
+
+        .file-upload {
+            position: relative;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .file-upload label {
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #76B900;
+            color: #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .custom-file-upload:hover {
+            background: rgba(54, 221, 76, 0.151);
+            transform: translateY(-2px);
+        }
+
+        .file-name {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #fff;
+        }
+
+        .form-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .privacy-notice {
+            color: #fff;
+            font-size: 0.9em;
+        }
+
+        .privacy-link {
+            color: #76B900;
+            text-decoration: none;
+        }
+
+        .privacy-link:hover {
+            text-decoration: underline;
+        }
+
+        .submit-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #76B900;
+            color: #fff;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #76B900;
+            transform: translateY(-2px);
+        }
+
+/* Responsive styles */
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .application-header h2 {
+                font-size: 2em;
+            }
+
+            .application-header p {
+                font-size: 1em;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            .form-section {
+                padding: 20px;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#home" class="logo"> Hot Beans Web </a>
+        <ul class="nav-links">
+            <li><a href="#company-profile">Company Profile</a></li>
+            <li><a href="#trainee-profile">Trainee Profile</a></li>
+            <li><a href="#web-development">Web Development</a></li>
+            <li><a href="#job-specs">Job Specifications</a></li>
+            <li><a href="#developer-skills">Developer Skills</a></li>
+            <li><a href="#courses">Learn Development</a></li>
+        </ul>
+        <div class="hamburger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Application Form -->
+<section id="application-form" class="application">
+    <div class="section-header application-header">
+        <h2>Job Application Form</h2>
+        <p>Join Our Team of Web Development Professionals</p>
+    </div>
+    <div class="form-container">
+        <form action="#" method="POST" class="job-application-form">
+
+<!-- Personal Information Section -->
+            <div class="form-section">
+                <h3>Personal Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+            </div>
+
+<!-- Professional Information Section -->
+            <div class="form-section">
+                <h3>Professional Information</h3>
+                <div class="form-group">
+                    <label for="portfolio">Portfolio Website</label>
+                    <input type="url" id="portfolio" name="portfolio" placeholder="https://your-portfolio.com">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="experience">Years of Experience *</label>
+                        <select id="experience" name="experience" required>
+                            <option value="">Select experience level</option>
+                            <option value="0-1">Less than 1 year</option>
+                            <option value="1-2">1-2 years</option>
+                            <option value="2-3">2-3 years</option>
+                            <option value="3-5">3-5 years</option>
+                            <option value="5+">5+ years</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="availability">Available Start Date *</label>
+                        <input type="date" id="availability" name="availability" required>
+                    </div>
+                </div>
+            </div>
+
+<!-- Skills Section -->
+            <div class="form-section">
+                <h3>Technical Skills</h3>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h4>Frontend Development</h4>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="skills[]" value="html"> HTML5</label>
+                            <label><input type="checkbox" name="skills[]" value="css"> CSS3</label>
+                            <label><input type="checkbox" name="skills[]" value="javascript"> JavaScript</label>
+                            <label><input type="checkbox" name="skills[]" value="react"> React.js</label>
+                            <label><input type="checkbox" name="skills[]" value="vue"> Vue.js</label>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Backend Development</h4>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="skills[]" value="node"> Node.js</label>
+                            <label><input type="checkbox" name="skills[]" value="python"> Python</label>
+                            <label><input type="checkbox" name="skills[]" value="php"> PHP</label>
+                            <label><input type="checkbox" name="skills[]" value="sql"> SQL</label>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Tools & Others</h4>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="skills[]" value="git"> Git</label>
+                            <label><input type="checkbox" name="skills[]" value="docker"> Docker</label>
+                            <label><input type="checkbox" name="skills[]" value="aws"> AWS</label>
+                            <label><input type="checkbox" name="skills[]" value="agile"> Agile</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!-- Additional Information Section -->
+            <div class="form-section">
+                <h3>Additional Information</h3>
+                <div class="form-group">
+                    <label for="coverletter">Cover Letter *</label>
+                    <textarea id="coverletter" name="coverletter" rows="5" placeholder="Tell us why you'd be a great fit for Hot Beans Web..." required></textarea>
+                </div>
+                <div class="form-group file-upload">
+                    <label>
+                        <i class="upload-icon">📎</i>
+                        Resume/CV (PDF, DOC, DOCX) *
+                    </label>
+                    <label for="resume" class="custom-file-upload">
+                        Choose File
+                    </label>
+                    <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+                    <div class="file-name">No file chosen</div>
+                    <span class="file-info">Maximum file size: 5MB</span>
+                </div>
+            </div>
+
+            <div class="form-footer">
+                <div class="privacy-notice">
+                    <label>
+                        <input type="checkbox" required>
+                        I agree to the processing of my personal data according to the 
+                        <a href="#" class="privacy-link">Privacy Policy</a>
+                    </label>
+                </div>
+
+<!-- Back to Home Button -->
+    <a href="hotbeans.html" class="back-to-home-btn" style="padding: 10px 20px; background-color: #76B900; color: white; text-decoration: none; border-radius: 5px; text-align: center; display: block; margin: 10px 0;">Back to Hot Beans Web</a>
+
+<!-- Submit Button -->
+    <button type="submit" class="submit-btn">
+        <span>Submit Application</span>
+        <i class="arrow-icon">→</i>
+        </button>
+    </div>
+        </form>
+    </div>
+</section>
+
+</body>
+</html>
